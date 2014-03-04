@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>HCI Project Portfolio</title>	
+	<title>CSE198 Bluetooth Sniffer</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,46 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
+    <![endif]-->    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      	google.load("visualization", "1", {packages:["corechart"]});
+     	google.setOnLoadCallback(drawChart);
+      	function drawChart() {
+      		var data = new google.visualization.DataTable();
+        	data.addColumn('number', 'X');
+        	data.addColumn('number', '64:A7:69:DC:48:6A');
+        	data.addColumn('number', 'BA:A8:19:DF:87:A6');
+        	data.addRow([8,1, null]);
+        	data.addRow([14, null, 5])
+        	/*for (var i = 0; i < 500; ++i) {
+            	data.addRow([Math.sin(i / 5) * 0.25, Math.cos(i / 25), null])
+          	}
+          	for (var i = 0; i < 500; i++) {
+            	data.addRow([Math.sin(i / 25), null, Math.cos(i / 10) * 0.5]);
+          	}*/
+
+        	/*var data = google.visualization.arrayToDataTable([
+          		['Time', 'piNum'],
+          		[ 8,      1],
+          		[ 4,      3],
+          		[ 11,     2],
+          		[ 4,      5],
+          		[ 3,      4],
+          		[ 6.5,    2]
+        	]);*/
+
+        	var options = {
+         		title: 'Time vs. Location Found',
+        		hAxis: {title: 'Time and Date', minValue: 24, maxValue: 0},
+          		vAxis: {title: 'Pi Found On', minValue: 1, maxValue: 5},
+          		legend: 'none'
+        	};
+
+        	var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+        	chart.draw(data, options);
+      	}
+    </script>    
 </head>
 
 <body>
@@ -23,47 +62,45 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Michael Bernstein</h1>
-			<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>
+			<h1>Bluetooth Sniffer</h1>
+			<p>Brian Lai &middot; Kenneth Nierenhausen</p>
 		</div>
-
-		<h4>Projects</h4>
+		<div id="chart_div" alight="centeR" style="width: 1000px; height: 500px;"></div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		{{#each projects}}
-		<div class="project" id="project{{id}}">
-			<div class="thumbnail">
-				<a href="#">
-					<img src="{{image}}" alt="Lorem Pixel image" class="img project-img">
-					<p>{{title}}</p>
-				</a>
-				<div class="details"></div>
-			</div>
-		</div>
-		{{/each}}
-
+ 		<div id="wrapper">
+        	<div class="chart">
+            	<h3>MAC Addresses Found</h3>
+            	<table id="data-table" border="1" cellpadding="10" cellspacing="0">
+               		<thead>
+                  		<tr>
+                    		<td>&nbsp;</td>
+                    		<th scope="col">MAC Address</th>
+                    		<th scope="col">Date Found</th>
+                    		<th scope="col">Found On</th>
+                  		</tr>
+               		</thead>
+               		<tbody>
+               			<script>
+               				var i = 1;
+               			</script>
+               			{{#each projects}}
+               				<tr>
+               					<script>
+               						document.write("<td>" + i.toString() + "</td>");
+               						i = i + 1;
+               					</script>
+               					<td>{{mac}}</td>
+               					<td>{{time}}</td>
+               					<td align="center">Pi #{{pi}}</td>
+               				</tr>
+               			{{/each}}
+               		</tbody>
+            	</table>
+        	</div>
+      	</div>
 	<hr />
-
-	<form id="new-project-form" role="form">
-    <div class="form-group">
-      <label for="title">Title for New Project:</label>
-      <input type="text" class="form-control" id="title" placeholder="Project Name">
-    </div>
-    <div class="form-group">
-      <label for="image_url">Project image URL</label>
-      <input type="text" class="form-control" id="image_url" placeholder="http://www.example.com/really_cool_image.jpg">
-    </div>
-    <div class="form-group">
-      <label for="date">Date</label>
-      <input type="text" class="form-control" id="date" placeholder="January 1">
-    </div>
-    <div class="form-group">
-      <label for="summary">Summary</label>
-      <textarea type="text" class="form-control" id="summary" rows="3" placeholder="Wow, Very Project!  So much summary!"></textarea>
-    </div>
-    <button id="newProjectSubmitButton" type="button" class="btn btn-default">Submit</button>
-  </form>
 
 	</div>
 
