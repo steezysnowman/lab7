@@ -18,23 +18,23 @@
     <![endif]-->    
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      	google.load("visualization", "1", {packages:["corechart"]});
+      /*google.load("visualization", "1", {packages:["corechart"]});
      	google.setOnLoadCallback(drawChart);
       	function drawChart() {
       		var data = new google.visualization.DataTable();
-        	data.addColumn('number', 'X');
+        	/*data.addColumn('number', 'X');
         	data.addColumn('number', '64:A7:69:DC:48:6A');
         	data.addColumn('number', 'BA:A8:19:DF:87:A6');
         	data.addRow([8,1, null]);
         	data.addRow([14, null, 5])
-        	/*for (var i = 0; i < 500; ++i) {
+        	for (var i = 0; i < 500; ++i) {
             	data.addRow([Math.sin(i / 5) * 0.25, Math.cos(i / 25), null])
           	}
           	for (var i = 0; i < 500; i++) {
             	data.addRow([Math.sin(i / 25), null, Math.cos(i / 10) * 0.5]);
-          	}*/
+          	}
 
-        	/*var data = google.visualization.arrayToDataTable([
+        	var data = google.visualization.arrayToDataTable([
           		['Time', 'piNum'],
           		[ 8,      1],
           		[ 4,      3],
@@ -42,7 +42,8 @@
           		[ 4,      5],
           		[ 3,      4],
           		[ 6.5,    2]
-        	]);*/
+        	]);
+
 
         	var options = {
          		title: 'Time vs. Location Found',
@@ -53,7 +54,7 @@
 
         	var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
         	chart.draw(data, options);
-      	}
+      	}*/
     </script>    
 </head>
 
@@ -99,6 +100,11 @@
                		</tbody>
             	</table>
         	</div>
+          <div id="hidden" hidden>
+            {{#each projects}}
+              <p id="d_{{@index}}" data-pi="{{pi}}" data-mac="{{mac}}" data-time="{{time}}"></p>
+            {{/each}}
+          </div>
       	</div>
 	<hr />
 

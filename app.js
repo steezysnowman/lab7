@@ -51,6 +51,12 @@ app.post('/project/:id/delete', project.deleteProject);
 // Example route
 // app.get('/users', user.list);
 
+app.post('/request', project.request);
+// request.js
+exports.request = function(req, res){
+    console.log("what?");
+}
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -75,3 +75,51 @@ function initializePage() {
 	});
 }
 
+google.load("visualization", "1", {packages:["corechart"]});
+console.log("here");
+google.setOnLoadCallback(drawChart);
+
+function drawChart() {
+	console.log("there");
+
+	var piArray = [];
+	var timeArray = [];
+	var macArray = [];
+
+    $('#hidden').children().each(function(){
+	piArray.push( $('#'+this.id).data("pi"));
+	timeArray.push( $('#'+this.id).data("time") );
+	macArray.push( $('#'+this.id).data("mac") );
+	});
+        	
+    console.log(piArray);
+    console.log(timeArray);
+    console.log(macArray);
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'time');
+    data.addColumn('number', 'piNum');
+    for (var i = 0; i < piArray.length; i++) {
+    	data.addRow([i + 12, piArray[i]]);
+    }
+
+    /*var data = google.visualization.arrayToDataTable([
+        ['Time', 'piNum'],
+        [ 8,      1],
+        [ 4,      3],
+        [ 11,     2],
+        [ 4,      5],
+        [ 3,      4],
+        [ 6.5,    2]
+        ]);*/
+
+    var options = {
+        title: 'Time vs. Location Found',
+       	hAxis: {title: 'Hours Passed', minValue: 24, maxValue: 0, direction: -1},
+        vAxis: {title: 'Pi Found On', minValue: 1, maxValue: 5},
+        legend: 'none'
+    };
+
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+}
