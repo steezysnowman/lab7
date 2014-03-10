@@ -59,56 +59,65 @@
 </head>
 
 <body>
+
 	<div class="container">
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Bluetooth Sniffer</h1>
+			<h1><strong>Bluetooth Sniffer</strong></h1>
 			<p>Brian Lai &middot; Kenneth Nierenhausen</p>
 		</div>
-		<div id="chart_div" alight="centeR" style="width: 1000px; height: 500px;"></div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
- 		<div id="wrapper">
-        	<div class="chart">
-            	<h3>MAC Addresses Found</h3>
-            	<table id="data-table" border="1" cellpadding="10" cellspacing="0">
-               		<thead>
-                  		<tr>
-                    		<td>&nbsp;</td>
-                    		<th scope="col">MAC Address</th>
-                    		<th scope="col">Date Found</th>
-                    		<th scope="col">Found On</th>
-                  		</tr>
-               		</thead>
-               		<tbody>
-               			<script>
-               				var i = 1;
-               			</script>
-               			{{#each projects}}
-               				<tr>
-               					<script>
-               						document.write("<td>" + i.toString() + "</td>");
-               						i = i + 1;
-               					</script>
-               					<td>{{mac}}</td>
-               					<td>{{time}}</td>
-               					<td align="center">Pi #{{pi}}</td>
-               				</tr>
-               			{{/each}}
-               		</tbody>
-            	</table>
-        	</div>
+
+	</div>
+
+        <div id="chart_div" alight="centeR" style="width: auto; height: 600px;"></div>
+
+  <div class="container">
+    <div id="wrapper">
+          <div class="chart">
+            <a href="#" onclick="document.getElementById('hiddenText').style.display="block"; return false;">Click here to show hidden text</a>
+              <h3>MAC Addresses Found</h3>
+              <div style="display: none;" id="hiddenText">This is hidden</div>
+
+              <table id="data-table" border="1" cellpadding="10" cellspacing="0">
+                  <thead>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <th scope="col">MAC Address</th>
+                        <th scope="col">Date Found</th>
+                        <th scope="col">Found On</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <script>
+                      var i = 1;
+                    </script>
+                    {{#each projects}}
+                      <tr>
+                        <script>
+                          document.write("<td>" + i.toString() + "</td>");
+                          i = i + 1;
+                        </script>
+                        <td>{{mac}}</td>
+                        <td>{{time}}</td>
+                        <td align="center">Pi #{{pi}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+              </table>
+          </div>
           <div id="hidden" hidden>
             {{#each projects}}
               <p id="d_{{@index}}" data-pi="{{pi}}" data-mac="{{mac}}" data-time="{{time}}"></p>
             {{/each}}
           </div>
-      	</div>
-	<hr />
+        </div>
+  <hr />
+</div>
 
-	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
