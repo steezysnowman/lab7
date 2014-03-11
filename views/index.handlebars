@@ -1,7 +1,4 @@
-<!doctype html>
-
-<html>
-<head>
+d>
 	<title>CSE198 Bluetooth Sniffer</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,71 +15,22 @@
     <![endif]-->    
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      /*google.load("visualization", "1", {packages:["corechart"]});
-     	google.setOnLoadCallback(drawChart);
-      	function drawChart() {
-      		var data = new google.visualization.DataTable();
-        	/*data.addColumn('number', 'X');
-        	data.addColumn('number', '64:A7:69:DC:48:6A');
-        	data.addColumn('number', 'BA:A8:19:DF:87:A6');
-        	data.addRow([8,1, null]);
-        	data.addRow([14, null, 5])
-        	for (var i = 0; i < 500; ++i) {
-            	data.addRow([Math.sin(i / 5) * 0.25, Math.cos(i / 25), null])
-          	}
-          	for (var i = 0; i < 500; i++) {
-            	data.addRow([Math.sin(i / 25), null, Math.cos(i / 10) * 0.5]);
-          	}
-
-        	var data = google.visualization.arrayToDataTable([
-          		['Time', 'piNum'],
-          		[ 8,      1],
-          		[ 4,      3],
-          		[ 11,     2],
-          		[ 4,      5],
-          		[ 3,      4],
-          		[ 6.5,    2]
-        	]);
-
-
-        	var options = {
-         		title: 'Time vs. Location Found',
-        		hAxis: {title: 'Time and Date', minValue: 24, maxValue: 0},
-          		vAxis: {title: 'Pi Found On', minValue: 1, maxValue: 5},
-          		legend: 'none'
-        	};
-
-        	var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-        	chart.draw(data, options);
-      	}*/
     </script>    
 </head>
 
 <body>
-
-	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
-		<div class="jumbotron">
-			<h1><strong>Bluetooth Sniffer</strong></h1>
-			<p>Brian Lai &middot; Kenneth Nierenhausen</p>
-		</div>
-		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-
-	</div>
-
-        <div id="chart_div" alight="centeR" style="width: auto; height: 600px;"></div>
-
   <div class="container">
+    <h3>Data Collected</h3>
+    <hr />
+  </div>
+        <div id="chart_div" alight="centeR" style="width: auto; height: 600px; margin-top: -40px;"></div>
+
+  <div class="container panel-group" id="accordion">
     <div id="wrapper">
           <div class="chart">
-            <a href="#" onclick="document.getElementById('hiddenText').style.display="block"; return false;">Click here to show hidden text</a>
-              <h3>MAC Addresses Found</h3>
-              <div style="display: none;" id="hiddenText">This is hidden</div>
+              <a href="#data-table" data-toggle="collapse" data-parent="#accordion"><h3>MAC Address List</h3></a>
 
-              <table id="data-table" border="1" cellpadding="10" cellspacing="0">
+              <table id="data-table" border="1" cellpadding="10" cellspacing="0" class="panel-collapse collapse">
                   <thead>
                       <tr>
                         <td>&nbsp;</td>
@@ -124,3 +72,4 @@
 	<script src="/js/introHCI.js"></script>
 </body>
 </html>
+
