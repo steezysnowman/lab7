@@ -111,8 +111,8 @@ function drawChart() {
     console.log("Mac Set Size (Unique MACs): " + macSetSize);
 
     //Convert Times to last seen compared to current time
-    //var currentTime = new Date().getTime() / 3600000;
-    var currentTime = new Date("2014-03-04 12:00:00") / 3600000
+    var currentTime = new Date().getTime() / 3600000;
+    //var currentTime = new Date("2014-03-04 12:00:00") / 3600000
 
     var timeArray = [];
     for(var x = 0; x < stringTimeArray.length; x++) {
