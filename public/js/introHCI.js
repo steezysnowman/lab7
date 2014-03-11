@@ -153,7 +153,7 @@ function drawChart() {
     var options = {
         title: 'Time vs. Location Found',
        	hAxis: {title: 'Hours Passed', minValue: 24, maxValue: 0, direction: -1},
-        vAxis: {title: 'Pi Found On', minValue: 1, maxValue: 5},
+        vAxis: {title: 'Pi Found On', minValue: 0, maxValue: 4},
         legend: 'none',
     };
 
